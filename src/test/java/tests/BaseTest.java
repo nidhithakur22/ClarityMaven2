@@ -15,6 +15,7 @@ import pages.AddEquipmentPage;
 import pages.AddPipelinePage;
 import pages.AssetsPage;
 import pages.DevicePage;
+import pages.EditDevicePage;
 import pages.EditPipelinePage;
 import pages.EquipmentPage;
 import pages.HomePage;
@@ -34,6 +35,7 @@ public class BaseTest {
     public EquipmentPage equipmentPage;
     public AddEquipmentPage addequipmentPage;
     public EditPipelinePage editpipelinePage;
+    public EditDevicePage editdevicePage;
     
     public WebDriverWait wait;
     public WebDriver getDriver() {
@@ -62,7 +64,7 @@ public class BaseTest {
         equipmentPage = new EquipmentPage(driver);
         addequipmentPage = new AddEquipmentPage(driver);
         editpipelinePage = new EditPipelinePage(driver);
-        
+        editdevicePage = new EditDevicePage(driver);
         
         wait = new WebDriverWait(driver,Duration.ofSeconds(20));
        }

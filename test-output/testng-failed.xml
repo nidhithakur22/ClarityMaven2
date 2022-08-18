@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.PipelineTests">
+      <class name="tests.EditDeviceTest">
         <methods>
           <include name="methodLevelSetup"/>
           <include name="classLevelSetup"/>
-          <include name="CreatePipeline" invocation-numbers="0"/>
+          <include name="EditDevice"/>
           <include name="teardown"/>
         </methods>
-      </class> <!-- tests.PipelineTests -->
+      </class> <!-- tests.EditDeviceTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
