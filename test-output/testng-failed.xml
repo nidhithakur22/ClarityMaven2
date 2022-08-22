@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.EditDeviceTest">
+      <class name="tests.UploadOQrecordsTest">
         <methods>
           <include name="methodLevelSetup"/>
+          <include name="UploadOQrecords" invocation-numbers="0"/>
           <include name="classLevelSetup"/>
-          <include name="EditDevice"/>
           <include name="teardown"/>
         </methods>
-      </class> <!-- tests.EditDeviceTest -->
+      </class> <!-- tests.UploadOQrecordsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

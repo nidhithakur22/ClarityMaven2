@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Aug 18 07:58:30 IST 2022</td>
+<td>Started on:</td><td>Sun Aug 21 15:39:58 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>273 seconds (273861 ms)</td>
+<tr><td>Total time:</td><td>32 seconds (32904 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,16 +76,19 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='tests.EditDeviceTest.EditDevice()'><b>EditDevice</b><br>Test class: tests.EditDeviceTest<br>Test method: Edit a Device</td>
-<td><div><pre>java.lang.AssertionError: expected [ ] but found [Device428]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1413)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
-	at org.testng.Assert.assertEquals(Assert.java:131)
-	at org.testng.Assert.assertEquals(Assert.java:655)
-	at org.testng.Assert.assertEquals(Assert.java:665)
-	at pages.EditDevicePage.searchDevice(EditDevicePage.java:43)
-	at tests.EditDeviceTest.EditDevice(EditDeviceTest.java:32)
+<td title='tests.UploadOQrecordsTest.UploadOQrecords()'><b>UploadOQrecords</b><br>Test class: tests.UploadOQrecordsTest<br>Test method: Workforce<br>Parameters: public void tests.UploadOQrecordsTest.UploadOQrecords(java.lang.reflect.Method) throws java.lang.InterruptedException</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.name: username (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.3.0&apos;, revision: &apos;a4995e2c09*&apos;
+System info: host: &apos;DESKTOP-UAJMCLF&apos;, ip: &apos;192.168.1.3&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.82, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Asus\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:52402}, networkConnectionEnabled: false, pageLoadStrategy: none, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52402/devtoo..., se:cdpVersion: 104.0.5112.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c01891d8e4517f4639fe48ce5d5ea5a6
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at pages.BasePage.waitVisibility(BasePage.java:38)
+	at pages.BasePage.writeText(BasePage.java:25)
+	at pages.LoginPage.logintoClarity(LoginPage.java:55)
+	at tests.UploadOQrecordsTest.UploadOQrecords(UploadOQrecordsTest.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -114,16 +117,19 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1404612586", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1404612586'><pre>java.lang.AssertionError: expected [ ] but found [Device428]
-	at org.testng.Assert.fail(Assert.java:110)
-	at org.testng.Assert.failNotEquals(Assert.java:1413)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
-	at org.testng.Assert.assertEquals(Assert.java:131)
-	at org.testng.Assert.assertEquals(Assert.java:655)
-	at org.testng.Assert.assertEquals(Assert.java:665)
-	at pages.EditDevicePage.searchDevice(EditDevicePage.java:43)
-	at tests.EditDeviceTest.EditDevice(EditDeviceTest.java:32)
+</pre></div><a href='#' onClick='toggleBox("stack-trace33510911", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace33510911'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.name: username (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.3.0&apos;, revision: &apos;a4995e2c09*&apos;
+System info: host: &apos;DESKTOP-UAJMCLF&apos;, ip: &apos;192.168.1.3&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 104.0.5112.82, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Asus\AppData\Local...}, goog:chromeOptions: {debuggerAddress: localhost:52402}, networkConnectionEnabled: false, pageLoadStrategy: none, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52402/devtoo..., se:cdpVersion: 104.0.5112.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: c01891d8e4517f4639fe48ce5d5ea5a6
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:87)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at pages.BasePage.waitVisibility(BasePage.java:38)
+	at pages.BasePage.writeText(BasePage.java:25)
+	at pages.LoginPage.logintoClarity(LoginPage.java:55)
+	at tests.UploadOQrecordsTest.UploadOQrecords(UploadOQrecordsTest.java:21)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -153,8 +159,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>271</td>
-<td>tests.EditDeviceTest@618b19ad</td></tr>
+<td>30</td>
+<td>tests.UploadOQrecordsTest@618b19ad</td></tr>
 </table><p>
 </body>
 </html>

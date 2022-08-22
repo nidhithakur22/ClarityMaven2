@@ -21,6 +21,8 @@ import pages.EquipmentPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PipelinePage;
+import pages.UploadOQrecordsPage;
+import pages.WorkforcePage;
 import util.Log;
 
 public class BaseTest {
@@ -36,6 +38,9 @@ public class BaseTest {
     public AddEquipmentPage addequipmentPage;
     public EditPipelinePage editpipelinePage;
     public EditDevicePage editdevicePage;
+    public WorkforcePage workforcePage;
+    public UploadOQrecordsPage uploadOQrecordsPage;
+    
     
     public WebDriverWait wait;
     public WebDriver getDriver() {
@@ -65,6 +70,7 @@ public class BaseTest {
         addequipmentPage = new AddEquipmentPage(driver);
         editpipelinePage = new EditPipelinePage(driver);
         editdevicePage = new EditDevicePage(driver);
+        uploadOQrecordsPage = new UploadOQrecordsPage(driver);
         
         wait = new WebDriverWait(driver,Duration.ofSeconds(20));
        }

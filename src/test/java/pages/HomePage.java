@@ -25,6 +25,7 @@ public class HomePage extends BasePage {
     */
    By signInButtonClass = By.className("btnSignIn");
    By assets			= By.xpath("//*[@id=\"id_sidebar_assets\"]");
+   By workforce			= By.xpath("//*[@id=\"id_sidebar_workforce\"]");
    
    /**
     * Page Methods
@@ -47,8 +48,24 @@ public class HomePage extends BasePage {
        return new AssetsPage(driver);
    }
  
-   //Click on Operations
-   
+   //Click on Workforce
+   public WorkforcePage goToWorkforce() {
+       Log.info("Navigating to Workforce");
+       
+       
+       try {
+           wait.until(ExpectedConditions.elementToBeClickable(workforce)).click();
+           System.out.println("Workforce tab is clickable");
+         }
+    catch(TimeoutException e) {
+           System.out.println("Workforce tab isn't clickable");
+    }
+       
+     //click (Workforce)
+       
+       return new WorkforcePage(driver);
+   }
+
    
 }
    
