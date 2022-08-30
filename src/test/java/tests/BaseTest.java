@@ -22,6 +22,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.PipelinePage;
 import pages.UploadOQrecordsPage;
+import pages.VerfiyEmployeeRecordPage;
 import pages.WorkforcePage;
 import util.Log;
 
@@ -40,7 +41,7 @@ public class BaseTest {
     public EditDevicePage editdevicePage;
     public WorkforcePage workforcePage;
     public UploadOQrecordsPage uploadOQrecordsPage;
-    
+    public VerfiyEmployeeRecordPage verifyOQrecordPage;
     
     public WebDriverWait wait;
     public WebDriver getDriver() {
@@ -71,6 +72,7 @@ public class BaseTest {
         editpipelinePage = new EditPipelinePage(driver);
         editdevicePage = new EditDevicePage(driver);
         uploadOQrecordsPage = new UploadOQrecordsPage(driver);
+        verifyOQrecordPage	= new VerfiyEmployeeRecordPage(driver);
         
         wait = new WebDriverWait(driver,Duration.ofSeconds(20));
        }

@@ -96,7 +96,7 @@ public class UploadOQrecordsPage extends BasePage {
     		catch(Exception e) {
     			System.out.println("Task File is missing. ");
     		}
-    	//	writeText(uploadfile,tasklistfile);
+    
     		Thread.sleep(waittime);
     		
     		click(importfile);
