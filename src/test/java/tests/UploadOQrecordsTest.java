@@ -18,8 +18,8 @@ public class UploadOQrecordsTest extends BaseTest{
 		startTest(method.getName(),"upload OQ records");
 		loginPage
 			.openClarityApp()
-			.logintoClarity("jennifer", "1111");
-		Thread.sleep(30000);
+			.logintoClarity("andersonoil", "1111");
+		Thread.sleep(10000);
 		homePage
 			.goToWorkforce();
 		Thread.sleep(15000);	

@@ -1,9 +1,15 @@
 package pages;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -18,23 +24,49 @@ public class UploadOQrecordsPage extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
 	 /**
 	    * Variables
 	    */
 	int waittime			=25000;
 	JavascriptExecutor js 	=(JavascriptExecutor) driver;
 	Actions a 			  	= new Actions(driver);
+	Faker faker				= new Faker();
+	String sourcename		= faker.lorem().characters(4);;
+	
+	public String createxpath(String id) {
+		//System.out.println("String concat in makexpath function");
+		String S1 =  "//*[@id='";
+		String S2="']";
+		String s3 = S1+id+S2;
+		System.out.println(s3);
+	return s3;
+	
+}
+
+	String tasklistfile 	="C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\WorldEnergyNet_1\\tasklist.xlsx";
+	String workstreamfile	="C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\EWNworkstream.xlsx";
+	String employeefile		="C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\EWNoqemployeeReport.xlsx";
+	String str				= createxpath(sourcename);
 	
 	/**
      * Web Elements
      */
+	
 		
 	By uploadOQbutton		=By.xpath("//*[@id=\"id_workforce_uploadOQRecords\"]/button");
 	By tasklist 			=By.id("taskTab");
-	By selectnewsource		=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[4]/input");
-	By newsourcename		=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[5]/input");
-	By taskfile				=By.xpath("//*[@id=\"fileInput\"]");  
-	By importOQtasklist		=By.xpath("//*[@id=\"import-qq-data\"]/div/form/div/div[3]/button[2]");
+	By source1				=By.className("left");
+	By selectsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[2]");
+	By newsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[3]/input");
+	By uploadfile			=By.xpath("//*[@id=\"fileInput\"]"); 
+	By importfile			=By.xpath("//*[@id=\"import-qq-data\"]/div/form/div/div[3]/button[2]");
+	By workstream 			=By.xpath("//*[@id=\"nav-tab\"]/a[4]");
+	By source				=By.xpath(str);
+	By employeematrix		=By.xpath("//*[@id=\"nav-tab\"]/a[2]");
+	By selectsourcestr		=By.xpath("/html/body/app-root/app-safepipe/ion-split-pane/ion-router-outlet/app-report/ion-content/ion-router-outlet/app-workforce/div[3]/div/form/div/div[6]/div[2]/div[1]/div/div[1]/div[7]");
+//	By selectsourcestr2 	= By.xpath("/html/body/app-root/app-safepipe/ion-split-pane/ion-router-outlet/app-report/ion-content/ion-router-outlet/app-workforce/div[3]/div/form/div/div[2]/div[2]/div[1]/div/div[1]/div[2]");
 	
     public UploadOQrecordsPage goToUploadOQRecords() {
         Log.info("Navigating to OQUpload Files");
@@ -53,34 +85,49 @@ public class UploadOQrecordsPage extends BasePage {
     
     
     public UploadOQrecordsPage addOQFiles() throws InterruptedException {
-    	Log.info("Added OQ Data excel Files");
-    	 try {
-	            wait.until(ExpectedConditions.visibilityOfElementLocated(tasklist));
-	            System.out.println("taskTab is located");
-	            click(tasklist);
-	          }
-	       catch(TimeoutException e) {
-	            System.out.println("taskTab isn't clickable");
-	         }
-    	 
-    	  Thread.sleep(waittime);
-    	  click(selectnewsource);
-    	  Thread.sleep(waittime);
-    	  Faker faker1 = new Faker();
-    	  writeText(newsourcename, faker1.numerify("####"));
-    	  Thread.sleep(waittime);
-    	  writeText(taskfile,"C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\WorldEnergyNet_1\\tasklist.xlsx");
-    	  Thread.sleep(waittime);
-    	  click(importOQtasklist);
-    	  Thread.sleep(waittime);
-         //wait.until(ExpectedConditions.elementToBeClickable(selectnewsource)).click();
-			/*
-			 * // writeText(newsource,"Energy Source"); // Thread.sleep(waittime); //
-			 * Thread.sleep(10000); writeText(
-			 * taskfile,"C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\tasklist.xlsx"
-			 * ); Thread.sleep(waittime); Thread.sleep(10000);
-			 */
-    	return new UploadOQrecordsPage(driver);
-    	
-    }
-}
+   
+    		Thread.sleep(waittime);
+    		click(selectsource);
+    		writeText(newsource,sourcename);
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(tasklistfile);
+    	//	writeText(uploadfile,tasklistfile);
+    		Thread.sleep(waittime);
+    		
+    		click(importfile);
+    		Thread.sleep(waittime);
+    		String url = driver.getCurrentUrl();
+    		driver.navigate().refresh();
+    		goToUploadOQRecords();
+    		Thread.sleep(waittime);
+    		click(workstream);
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.findElement(source).click();
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(workstreamfile);
+    		Thread.sleep(waittime);
+
+    		click(importfile);
+    		Thread.sleep(waittime);
+    		driver.navigate().refresh();
+    		goToUploadOQRecords();
+    		Thread.sleep(waittime);
+    		click (employeematrix);
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.findElement(source).click();
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(employeefile);
+    		Thread.sleep(waittime);
+    		click(importfile);
+    		Thread.sleep(waittime);
+    		Thread.sleep(waittime);
+    		driver.navigate().refresh();
+    		Thread.sleep(30000);
+    		
+		return new UploadOQrecordsPage(driver);
+    }}

@@ -46,15 +46,17 @@ public class LoginPage extends BasePage {
     public LoginPage openClarityApp() throws InterruptedException {
         Log.info("Opening Clarity Application.");
         driver.get(baseURL);
-        Thread.sleep(20000);
+        Thread.sleep(30000);
         return this;
     }
     
     public LoginPage logintoClarity(String username, String password) throws InterruptedException {
         Log.info("Trying to login the clarity.");
+        Thread.sleep(7000);
         writeText(userNameId, username);
+        Thread.sleep(7000);
         writeText(passwordId, password);
-        Thread.sleep(20000);
+        Thread.sleep(7000);
         click(loginButtonId);
         return this;
     }
