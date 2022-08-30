@@ -36,7 +36,7 @@ public class UploadOQrecordsPage extends BasePage {
 	String sourcename		= faker.lorem().characters(4);;
 	
 	public String createxpath(String id) {
-		//System.out.println("String concat in makexpath function");
+		System.out.println("Create a Xpath using String concatenation  ");
 		String S1 =  "//*[@id='";
 		String S2="']";
 		String s3 = S1+id+S2;
@@ -58,8 +58,8 @@ public class UploadOQrecordsPage extends BasePage {
 	By uploadOQbutton		=By.xpath("//*[@id=\"id_workforce_uploadOQRecords\"]/button");
 	By tasklist 			=By.id("taskTab");
 	By source1				=By.className("left");
-	By selectsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[2]");
-	By newsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[3]/input");
+	By selectsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[3]");
+	By newsource			=By.xpath("//*[@id=\"nav-tabtracker\"]/div/div[1]/div[4]/input");
 	By uploadfile			=By.xpath("//*[@id=\"fileInput\"]"); 
 	By importfile			=By.xpath("//*[@id=\"import-qq-data\"]/div/form/div/div[3]/button[2]");
 	By workstream 			=By.xpath("//*[@id=\"nav-tab\"]/a[4]");
@@ -91,7 +91,11 @@ public class UploadOQrecordsPage extends BasePage {
     		writeText(newsource,sourcename);
     		Thread.sleep(waittime);
     		Thread.sleep(waittime);
-    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(tasklistfile);
+    		try {
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(tasklistfile);}
+    		catch(Exception e) {
+    			System.out.println("Task File is missing. ");
+    		}
     	//	writeText(uploadfile,tasklistfile);
     		Thread.sleep(waittime);
     		
@@ -107,7 +111,11 @@ public class UploadOQrecordsPage extends BasePage {
     		driver.findElement(source).click();
     		Thread.sleep(waittime);
     		Thread.sleep(waittime);
-    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(workstreamfile);
+    		try {
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(workstreamfile);}
+    		catch(Exception e) {
+    			System.out.println("Workstream file is missing");
+    		}
     		Thread.sleep(waittime);
 
     		click(importfile);
@@ -121,7 +129,11 @@ public class UploadOQrecordsPage extends BasePage {
     		driver.findElement(source).click();
     		Thread.sleep(waittime);
     		Thread.sleep(waittime);
-    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(employeefile);
+    		try {
+    		driver.findElement(By.xpath("//*[@id=\"fileInput\"]")).sendKeys(employeefile); }
+    		catch(Exception e) {
+    			System.out.println("Employee Matrix file is missing");
+    		}
     		Thread.sleep(waittime);
     		click(importfile);
     		Thread.sleep(waittime);
