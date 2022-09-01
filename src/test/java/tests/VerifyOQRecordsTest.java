@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 public class VerifyOQRecordsTest extends BaseTest {
 
 	@Test(priority =0 , description = "Workforce")
-	public void VerifyOQrecords(Method method) throws InterruptedException{
+	public void VerifyOQrecords(Method method) throws Exception{
 		//ExtentReports Description
-		startTest(method.getName(),"upload OQ records");
+		startTest(method.getName(),"Verify the OQ records");
 		loginPage
 			.openClarityApp()
 			.logintoClarity("andersonoil", "1111");

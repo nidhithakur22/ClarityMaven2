@@ -35,7 +35,7 @@ public class UploadOQrecordsPage extends BasePage {
 	Faker faker				= new Faker();
 	String sourcename		= faker.lorem().characters(4);;
 	
-	public String createxpath(String id) {
+	private String createxpath(String id) {
 		System.out.println("Create a Xpath using String concatenation  ");
 		String S1 =  "//*[@id='";
 		String S2="']";
