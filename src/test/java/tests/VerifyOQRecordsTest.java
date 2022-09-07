@@ -22,6 +22,9 @@ public class VerifyOQRecordsTest extends BaseTest {
 		verifyOQrecordPage
 			.verifyOQEmployeeRecords();
 		Thread.sleep(25000);
+		verifyOQrecordPage
+			.TestEmployeeOQRecords();
+		
 		
 	Thread.sleep(25000);
 }
