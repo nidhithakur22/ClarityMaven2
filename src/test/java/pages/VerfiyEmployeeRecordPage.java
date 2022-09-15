@@ -47,7 +47,7 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 
 	int waittime = 25000;
 	public String[][] data;
-	public String name1;
+
 	public String name;
 	public String EmployeeFullName;
 
@@ -56,8 +56,7 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 	Actions a = new Actions(driver);
 	String filepath = "C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\EWNoqemployeeReport.xlsx";
 	SoftAssert softAssert = new SoftAssert();
-	 List<String> l1 = new ArrayList<String>();
-	 List<String> l2 = new ArrayList<String>();
+	
 	/*
 	 * Web Element
 	 */
@@ -127,10 +126,7 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 		//	softAssert.assertEquals(name,(data[i][0]+" "+data[i][1]).concat(" Repair & maintenance"),"Record matched");
 		//		Assert.assertEquals(name,EmployeeFullName.toString());
 				
-				 		
-				 		//	System.out.println((name.equalsIgnoreCase(EmployeeFullName)));
-							//System.out.println("Name Matched  "+name+ " "+ EmployeeFullName);
-				 			if(name.equalsIgnoreCase(EmployeeFullName)) {
+				  			if(name.equalsIgnoreCase(EmployeeFullName)) {
 				 				System.out.println("Name Matched  "+name+ "--"+ EmployeeFullName);
 				 					break;
 				 			}
@@ -138,31 +134,12 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 				 			{
 				 				System.out.println("Not Matched");
 				 			}
-						
-						
-						 }
-				//	l1.add(EmployeeFullName);
+			    
+			}}
 			
-								
-					
-			    //	System.out.println("Record found");
-			    //	Assert.assertEquals(name,EmployeeFullName.toString());
-			    	
-		
-			}
-		
-		
-		
-
-		//		Assert.assertEquals(name.split("Repair & maintenance"),(data[i][0].toString()+" "+data[i][1].toString())," Record matched");
-			
-		
-
-		
 	return new VerfiyEmployeeRecordPage(driver);
 
-	
+	}
 	}
 	
-
-}
+	
