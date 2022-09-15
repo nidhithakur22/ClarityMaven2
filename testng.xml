@@ -9,7 +9,6 @@
 	  <class name="tests.EquipmentTest"/>
 	  <class name="tests.EditPipelineTest"/>
 	  <class name="tests.EditDeviceTest"/>
-      <class name="tests.UploadOQrecordsTest"/>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

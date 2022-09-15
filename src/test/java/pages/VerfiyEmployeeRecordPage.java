@@ -1,16 +1,22 @@
 package pages;
 
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
-
+import org.apache.commons.collections4.bag.SynchronizedSortedBag;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,8 +32,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.github.javafaker.Faker;
+import com.sun.beans.introspect.PropertyInfo.Name;
 
 public class VerfiyEmployeeRecordPage extends BasePage {
 
@@ -37,15 +46,22 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 	}
 
 	int waittime = 25000;
+	public String[][] data;
+	public String name1;
+	public String name;
+	public String EmployeeFullName;
 
-	JavascriptExecutor js 	= (JavascriptExecutor) driver;
-	Actions a 				= new Actions(driver);
-	String filepath 		= "C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\EWNoqemployeeReport.xlsx";  
 
-
+	JavascriptExecutor js = (JavascriptExecutor) driver;
+	Actions a = new Actions(driver);
+	String filepath = "C:\\Users\\Asus\\Desktop\\Clarity Videos\\Clarity_Assurance\\EWN OQ files\\EWN OQ files\\EWNoqemployeeReport.xlsx";
+	SoftAssert softAssert = new SoftAssert();
+	 List<String> l1 = new ArrayList<String>();
+	 List<String> l2 = new ArrayList<String>();
 	/*
 	 * Web Element
 	 */
+	By employee = By.xpath("//*[@id=\"nav-home-tab\"]/div/div[1]/div/h4");
 
 	By searchbar = By.xpath("//*[@id=\"nav-tab\"]/div[2]/div[1]/input");
 
@@ -65,96 +81,88 @@ public class VerfiyEmployeeRecordPage extends BasePage {
 		int cols 			= sheet1.getRow(1).getLastCellNum();
 		System.out.println("Total number of rows---" + (rows-1));						
 		System.out.println("Total number of columns---" + cols+"\n");
-		/*
-		 * java.util.Iterator<Row> iterator = sheet1.iterator();
-		 * 
-		 * String data1[][] = new String[rows][cols]; while(iterator.hasNext()) {
-		 * XSSFRow row1 = (XSSFRow) iterator.next(); java.util.Iterator<Cell> cell1 =
-		 * row1.cellIterator(); while(cell1.hasNext()) {
-		 * 
-		 * XSSFCell cell2 = (XSSFCell) cell1.next(); String value;
-		 * switch(cell2.getCellType()) {
-		 * 
-		 * case STRING : value = cell2.getStringCellValue(); System.out.println(value);
-		 * break; case NUMERIC : value = cell2.getDateCellValue().toString();
-		 * System.out.println(value); break; default: break;
-		 * 
-		 * } System.out.print(" ! ");
-		 * 
-		 * } System.out.println();
-		 * 
-		 * 
-		 * }
-		 */
-		String[][] data = new String[rows][cols];
+		
+		 data = new String[rows][cols];
 		
 		for(int i =0; i<=rows-1; i++)
 		{
 			XSSFRow row = sheet1.getRow(i);
 			for(int j = 0; j<cols;j++) {
-				DataFormatter df = new DataFormatter();
-			data[i][j] = df.formatCellValue(sheet1.getRow(i).getCell(j));
-		//		XSSFCell cell = row.getCell(j);
-			//	String value = null;
-			
-		/*		  switch(cell.getCellType()) {
-				 
-				  case STRING :
-					  value = cell.getStringCellValue();
-						data1[i][j] = value;
-					  System.out.print(value);
-					  System.out.print("  ");
-				  break;
-				  case NUMERIC :	  
-					   value = cell.getDateCellValue().toString();
-						data1[i][j] = value;
-						 System.out.print(value);
-						 System.out.print("  ");
-						 break;
 				
-				  default: break;
-				  */
-			}
-					
-			
-			
-			System.out.println(" ");
+			DataFormatter df = new DataFormatter();
+			data[i][j] = df.formatCellValue(sheet1.getRow(i).getCell(j));
 	
-			
-		}
+				System.out.println(" ");
+				
+				
+			}}
 		
-		
-	
 		wb.close();
 		fis.close();
+		
 		for(String[] dataArr : data) {
-		System.out.println(java.util.Arrays.toString(dataArr));	
-		}
+			System.out.println( java.util.Arrays.toString(dataArr));
 		
-		return new VerfiyEmployeeRecordPage(driver);
+		}
+					
+		
+	Thread.sleep(10000);
+	
+		
+		List<WebElement> list = driver.findElements(employee);
+		System.out.println("hello");
+		System.out.println(list.size());
+		for(WebElement lsElement : list)
+		
+		{
+			// String  remove= "Repair & maintenance";
+			 name = lsElement.getText().replaceAll("Repair & maintenance.*", "").trim();
+			System.out.println("Application Name="+name);
+			
+			 
+			for(int i=1;i<=data.length-1 ;i++) {
+				 EmployeeFullName =( data[i][0].toString()+" "+data[i][1].toString()).trim();
+				 System.out.println("Excel="+EmployeeFullName);
+				
+		//	softAssert.assertEquals(name,(data[i][0]+" "+data[i][1]).concat(" Repair & maintenance"),"Record matched");
+		//		Assert.assertEquals(name,EmployeeFullName.toString());
+				
+				 		
+				 		//	System.out.println((name.equalsIgnoreCase(EmployeeFullName)));
+							//System.out.println("Name Matched  "+name+ " "+ EmployeeFullName);
+				 			if(name.equalsIgnoreCase(EmployeeFullName)) {
+				 				System.out.println("Name Matched  "+name+ "--"+ EmployeeFullName);
+				 					break;
+				 			}
+				 			else
+				 			{
+				 				System.out.println("Not Matched");
+				 			}
+						
+						
+						 }
+				//	l1.add(EmployeeFullName);
+			
+								
+					
+			    //	System.out.println("Record found");
+			    //	Assert.assertEquals(name,EmployeeFullName.toString());
+			    	
+		
+			}
+		
+		
+		
 
+		//		Assert.assertEquals(name.split("Repair & maintenance"),(data[i][0].toString()+" "+data[i][1].toString())," Record matched");
+			
+		
+
+		
+	return new VerfiyEmployeeRecordPage(driver);
+
+	
 	}
 	
-	
-	
-	By employee = By.xpath("//*[@id=\"nav-home-tab\"]/div/div[1]/div/h4");
-	
-	public void TestEmployeeOQRecords() throws InterruptedException {
-	
-		Thread.sleep(10000);
-		String w1 = driver.findElement(employee).getText();
-		try {
-			Thread.sleep(10000);
-		assertEquals(w1,"Smith Adam Repair & maintenance");
-		System.out.println("employee found");
-		}finally {
-			System.out.println("employee not found");
-		}
-		
-		
-		 	
-		
-	}
-
 
 }

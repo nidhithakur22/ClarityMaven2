@@ -50,7 +50,7 @@ public class BaseTest {
     @BeforeClass
     public void classLevelSetup() {
         Log.info("Tests is starting!");
-        System.setProperty("webdriver.chrome.driver", "D:\\eclipse\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32 (1)\\chromedriver_win32\\chromedriver.exe");
         ChromeOptions option=new ChromeOptions();
         option.setPageLoadStrategy(PageLoadStrategy.NONE);
         option.addArguments("--disable-notifications");
